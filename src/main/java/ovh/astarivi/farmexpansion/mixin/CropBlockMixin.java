@@ -11,6 +11,7 @@ import net.minecraft.world.BlockView;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
+import org.spongepowered.asm.mixin.Unique;
 import ovh.astarivi.farmexpansion.block.farmland.FarmlandBlockEntity;
 import ovh.astarivi.farmexpansion.manager.BlockManager;
 import ovh.astarivi.farmexpansion.util.AdvancedCrop;
@@ -53,6 +54,7 @@ public abstract class CropBlockMixin extends PlantBlock implements Fertilizable,
         }
     }
 
+    @Unique
     @Override
     public Nutrient soilExpanded$getGrowNutrient() {
         return Nutrient.NITROGEN;

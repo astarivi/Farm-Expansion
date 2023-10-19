@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "farmexpansion:block/farmland_block" }
+  }
+}
