@@ -34,8 +34,7 @@ public class BlockManager {
                                 .strength(0.6f)
                                 .sounds(BlockSoundGroup.GRAVEL)
                                 .dropsNothing()
-                                .blockVision(Blocks::always)
-                                .suffocates(Blocks::always)
+                                .nonOpaque()
                 )
         );
 

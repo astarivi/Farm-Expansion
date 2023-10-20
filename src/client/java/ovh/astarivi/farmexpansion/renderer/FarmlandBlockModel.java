@@ -15,7 +15,7 @@ public class FarmlandBlockModel extends GeoModel<FarmlandBlockEntity> {
 
     @Override
     public Identifier getTextureResource(FarmlandBlockEntity animatable) {
-        return new Identifier(FarmExpansion.modId, "textures/block/farmland_block.png");
+        return new Identifier(FarmExpansion.modId, "textures/block/cfarmland_u.png");
     }
 
     @Override
