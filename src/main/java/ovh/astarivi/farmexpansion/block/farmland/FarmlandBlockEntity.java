@@ -1,5 +1,6 @@
 package ovh.astarivi.farmexpansion.block.farmland;
 
+import net.fabricmc.fabric.api.blockview.v2.RenderDataBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -22,7 +23,7 @@ import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInst
 import software.bernie.geckolib.core.animation.AnimatableManager;
 
 
-public class FarmlandBlockEntity extends BlockEntity implements GeoBlockEntity {
+public class FarmlandBlockEntity extends BlockEntity implements GeoBlockEntity, RenderDataBlockEntity {
     private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     // First value is nutrient, second is moisture
     private static final float[] WEIGHTS = new float[] {0.6F, 0.4F};
@@ -38,6 +39,12 @@ public class FarmlandBlockEntity extends BlockEntity implements GeoBlockEntity {
         super(BlockManager.FARMLAND_BLOCK_ENTITY, pos, state);
     }
 
+    @Nullable
+    public Object getRenderData() {
+        return new FarmlandRenderData(npkm);
+    }
+
+    // NBT
     @Override
     protected void writeNbt(NbtCompound nbt) {
         nbt.putIntArray("npkm", npkm);
