@@ -1,14 +1,10 @@
 package ovh.astarivi.farmexpansion.renderer;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockRenderView;
-
 import org.jetbrains.annotations.Nullable;
-
-import ovh.astarivi.farmexpansion.block.farmland.FarmlandBlockEntity;
 import ovh.astarivi.farmexpansion.block.farmland.FarmlandRenderData;
 
 import java.awt.*;
@@ -19,11 +15,7 @@ public class FarmlandColorProvider implements BlockColorProvider {
     public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
         if (world == null) return 0x9b7653;
 
-        BlockEntity blockEntity = world.getBlockEntity(pos);
-
-        if (!(blockEntity instanceof FarmlandBlockEntity)) return 0x9b7653;
-
-        final Object renderData = blockEntity.getRenderData();
+        final Object renderData = world.getBlockEntityRenderData(pos);
 
         if (!(renderData instanceof FarmlandRenderData farmlandRenderData)) return 0x9b7653;
 

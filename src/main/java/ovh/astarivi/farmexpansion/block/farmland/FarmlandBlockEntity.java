@@ -1,6 +1,7 @@
 package ovh.astarivi.farmexpansion.block.farmland;
 
 import net.fabricmc.fabric.api.blockview.v2.RenderDataBlockEntity;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -82,8 +83,8 @@ public class FarmlandBlockEntity extends BlockEntity implements GeoBlockEntity, 
 
         if (currentMoisture != storedMoisture) {
             npkm[3] = (currentMoisture > storedMoisture)
-                    ? Math.max(storedMoisture + randomRate, currentMoisture)
-                    : Math.min(storedMoisture - randomRate, currentMoisture);
+                    ? Math.min(storedMoisture + randomRate, currentMoisture)
+                    : Math.max(storedMoisture - randomRate, currentMoisture);
         }
 
         // Nutrients absorption
@@ -104,6 +105,7 @@ public class FarmlandBlockEntity extends BlockEntity implements GeoBlockEntity, 
         }
 
         markDirty();
+        world.updateListeners(pos, getCachedState(), getCachedState(), Block.NOTIFY_ALL);
     }
 
     protected int calculateCurrentMoisture(World world, BlockPos centerPos) {
